@@ -1,17 +1,40 @@
-#include <cs50.h>
 #include <stdio.h>
 
-int string_length(string s);
+// Function prototype to calculate string length
+int get_string_length(char *s);
 
 int main(void)
 {
-    string name = get_string("Name: ");
-    int len = string_length(name);
+    char name[100];
+
+    // Prompt user for input
+    printf("Name: ");
+    // Read string including spaces (stops at newline)
+    scanf("%99s", name);
+
+    // Call the function and store the result
+    int len = get_string_length(name);
+
+    // Print the length of the string
     printf("%i\n", len);
+
+    return 0;
 }
 
-int string_length(string s)
+/**
+ * Iterates through the string until the null terminator '\0' is found.
+ * @param s The string to measure
+ * @return The number of characters before the null terminator
+ */
+int get_string_length(char *s)
 {
-    // TODO: count chars until '\0'
-    return 0;
+    int i = 0;
+
+    // Keep counting as long as the current character is NOT the null terminator
+    while (s[i] != '\0')
+    {
+        i++;
+    }
+
+    return i;
 }
